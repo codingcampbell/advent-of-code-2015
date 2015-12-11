@@ -1,8 +1,12 @@
-require('fs').readFile('input.txt', (err, data) => {
-  var count = 0;
-  data.toString().split('').every((y, index) => {
+module.exports = (input) => {
+  var count = 0, result;
+
+  input.split('').every((y, index) => {
+    result = index + 1;
     count += (y === '(' ? 1 : -1);
 
-    return count >= 0 || console.log(index + 1);
+    return count >= 0;
   });
-});
+
+  return result;
+};

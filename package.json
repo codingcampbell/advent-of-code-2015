@@ -1,0 +1,13 @@
+{
+  "name": "advent-of-code-2015",
+  "version": "0.0.1",
+  "description": "See http://adventofcode.com/",
+  "scripts": {
+    "test": "node index"
+  },
+  "author": "Matt Campbell <matt@mattcampbell.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  }
+}
