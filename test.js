@@ -1,5 +1,7 @@
 var fs = require('fs');
 
+var cliDays = process.argv.slice(2).map(n => +n).filter(n => n && !isNaN(n));
+
 var answers = {
   'day-1': {
     part1: 74,
@@ -22,7 +24,11 @@ var answers = {
 var assert = (left, right, done) => done(left === right ? null : new Error(right + ' instead of ' + left))
 var asyncify = val => val.length > 1 ? val : (input, done) => process.nextTick(() => done(val(input)));
 
-Object.keys(answers).forEach(day => {
+Object.keys(answers).forEach((day, index) => {
+  if (cliDays.length && cliDays.indexOf(index + 1) === -1) {
+    return;
+  }
+
   describe(day, () => {
     Object.keys(answers[day]).forEach(part => {
       var mod = require('./' + day + '/' + part);
