@@ -20,6 +20,7 @@ var answers = {
 };
 
 var assert = (left, right, done) => done(left === right ? null : new Error(right + ' instead of ' + left))
+var asyncify = val => val.length > 1 ? val : (input, done) => process.nextTick(() => done(val(input)));
 
 Object.keys(answers).forEach(day => {
   describe(day, () => {
@@ -29,7 +30,7 @@ Object.keys(answers).forEach(day => {
       it(part + ' should be ' + answers[day][part], function(done) {
         this.timeout(0);
         fs.readFile('./' + day + '/input.txt', (err, data) =>
-          err && done(err) || assert(answers[day][part], mod(data.toString()), done)
+          err && done(err) || asyncify(mod)(data.toString(), value => assert(answers[day][part], value, done))
         )
       });
     });
