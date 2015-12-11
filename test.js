@@ -9,6 +9,10 @@ var answers = {
     part1: 1606483,
     part2: 3842356
   },
+  'day-3': {
+    part1: 2592,
+    part2: 2360
+  },
 };
 
 var assert = (left, right, done) => done(left === right ? null : new Error(right + ' instead of ' + left))
