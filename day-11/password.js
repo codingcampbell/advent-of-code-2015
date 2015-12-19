@@ -1,16 +1,6 @@
 'use strict';
 
-var uniq = function(arr) {
-  var cache = {}, result = [];
-  arr.forEach(value => {
-    if (!cache[value]) {
-      result.push(value);
-      cache[value] = true;
-    }
-  });
-
-  return result;
-};
+var util = require('../shared/util');
 
 var hasAscension = input => {
   var chars = input.split(''), count = 0, lastCode = 0, code;
@@ -56,7 +46,7 @@ class Password {
     }
 
     // Must contain at least 2 different pairs of letters
-    if (uniq(this.password.match(/([a-z])\1/g) || []).length < 2) {
+    if (util.uniq((this.password.match(/([a-z])\1/g) || []).map(value => [value])).length < 2) {
       return false;
     }
 
