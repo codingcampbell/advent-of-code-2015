@@ -16,6 +16,7 @@ var answers = {
   'day-11': { part1: 'hxbxxyzz', part2: 'hxcaabcc' },
   'day-12': { part1: 156366, part2: 96852 },
   'day-13': { part1: 618, part2: 601 },
+  'day-14': { part1: 2655, part2: 1059 },
 };
 
 var assert = (left, right, done) => done(left === right ? null : new Error(right + ' instead of ' + left))
