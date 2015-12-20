@@ -43,9 +43,7 @@ class Graph {
   }
 
   getRoutes() {
-    return util.uniq(Object.keys(this.nodes).reduce((a, b) => {
-      return a.concat(util.permutate(Object.keys(this.nodes[b].relations)));
-    }, []).sort()).map(path => ({
+    return util.permutate(Object.keys(this.nodes)).map(path => ({
       path,
       distance: this.getDistance(path)
     }));
