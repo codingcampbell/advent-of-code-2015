@@ -1,12 +1,16 @@
 'use strict';
 
+var swap = (arr, leftIndex, rightIndex) => {
+  var tmp = arr[leftIndex];
+  arr[leftIndex] = arr[rightIndex];
+  arr[rightIndex] = tmp;
+  return arr;
+};
+
+module.exports.swap = swap;
+
 // Adapted from https://en.wikipedia.org/wiki/Heap's_algorithm
 var permutateStream = (arr, callback) => {
-  var swap = (arr, leftIndex, rightIndex) => {
-    var tmp = arr[leftIndex];
-    arr[leftIndex] = arr[rightIndex];
-    arr[rightIndex] = tmp;
-  };
 
   var heap = function(n, arr, callback) {
     if (n === 1) {
