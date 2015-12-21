@@ -42,11 +42,12 @@ class Graph {
     return distance;
   }
 
-  getRoutes() {
-    return util.permutate(Object.keys(this.nodes)).map(path => ({
-      path,
-      distance: this.getDistance(path)
-    }));
+  getMaxDistance() {
+    var maxDistance = 0;
+    util.permutateStream(Object.keys(this.nodes), path => {
+      maxDistance = Math.max(maxDistance, this.getDistance(path));
+    });
+    return maxDistance;
   }
 };
 

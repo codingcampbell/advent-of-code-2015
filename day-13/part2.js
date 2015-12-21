@@ -10,5 +10,5 @@ module.exports = input => {
     graph.nodes[person].relations.Myself = 0;
   });
 
-  return graph.getRoutes().sort((a, b) => b.distance - a.distance)[0].distance;
+  return graph.getMaxDistance();
 }

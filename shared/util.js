@@ -1,7 +1,7 @@
 'use strict';
 
 // Adapted from https://en.wikipedia.org/wiki/Heap's_algorithm
-module.exports.permutate = arr => {
+var permutateStream = (arr, callback) => {
   var swap = (arr, leftIndex, rightIndex) => {
     var tmp = arr[leftIndex];
     arr[leftIndex] = arr[rightIndex];
@@ -21,11 +21,16 @@ module.exports.permutate = arr => {
     heap(n - 1, arr, callback);
   };
 
-  var results = [];
-  heap(arr.length, arr, result => results.push(result.slice()));
+  heap(arr.length, arr, callback);
+};
 
+module.exports.permutate = arr => {
+  var results = [];
+  permutateStream(arr, result => results.push(result));
   return results;
 };
+
+module.exports.permutateStream = permutateStream;
 
 module.exports.uniq = function(arr) {
   var cache = {}, result = [];
